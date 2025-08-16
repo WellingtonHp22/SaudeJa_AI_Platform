@@ -1,0 +1,38 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="streamlit" />
+          <option value="pandas" />
+          <option value="matplotlib" />
+          <option value="seaborn" />
+          <option value="plotly" />
+          <option value="requests" />
+          <option value="sqlalchemy" />
+          <option value="psycopg2-binary" />
+          <option value="python-dotenv" />
+          <option value="beautifulsoup4" />
+          <option value="numpy" />
+          <option value="scikit-learn" />
+          <option value="wordcloud" />
+          <option value="pymongo" />
+          <option value="firebase-admin" />
+          <option value="openai" />
+          <option value="google-cloud-bigquery" />
+          <option value="openpyxl" />
+          <option value="xlsxwriter" />
+          <option value="uuid" />
+          <option value="asyncio-throttle" />
+          <option value="aiohttp" />
+          <option value="streamlit-authenticator" />
+          <option value="streamlit-option-menu" />
+          <option value="hashlib2" />
+          <option value="statsmodels" />
+          <option value="textblob" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
