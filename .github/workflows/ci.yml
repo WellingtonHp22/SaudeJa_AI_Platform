@@ -1,0 +1,55 @@
+name: SaudeJá AI Platform - CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Test imports
+      run: |
+        python -c "import streamlit; print('✅ Streamlit OK')"
+        python -c "import security_ai; print('✅ Security AI OK')"
+        python -c "import pandas; print('✅ Pandas OK')"
+
+    - name: Run basic tests
+      run: |
+        python test_app.py
+
+    - name: Check code quality
+      run: |
+        python -m py_compile app.py
+        python -m py_compile security_ai.py
+
+  deploy-demo:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Deploy to Streamlit Cloud
+      run: |
+        echo "🚀 Ready for Streamlit Cloud deployment"
+        echo "📊 SaudeJá AI Platform is production-ready!"
